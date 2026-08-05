@@ -18,15 +18,13 @@ jobs:
           channel: 'stable'
 
       - name: Install dependencies
-        working-directory: tenda_app
         run: flutter pub get
 
       - name: Build APK
-        working-directory: tenda_app
         run: flutter build apk --split-per-abi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: tenda_app/build/app/outputs/flutter-apk/*.apk
+          path: build/app/outputs/flutter-apk/*.apk
